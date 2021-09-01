@@ -16,18 +16,23 @@ public class Restaurant {
         this.location = location;
         this.openingTime = openingTime;
         this.closingTime = closingTime;
+        buildMenu();
     }
 
 
 
-    public boolean isRestaurantOpen() {
+    public boolean isRestaurantOpen(LocalTime now) {
 
-        // get current time
-        LocalTime now=getCurrentTime();
-        System.out.println("Current time : "+ now);
+            System.out.println("Current time : "+ now);
+            int checkClosingTime = now.compareTo(this.closingTime);
+            System.out.println("Closing time : "+ now);
+            int checkOpeningTime = now.compareTo(this.openingTime);
+            System.out.println("Opening time : "+ now);
 
-        //if current time is between opening and closing
-        return now.isAfter(openingTime) && now.isBefore(closingTime);
+            //Check if the currenttime is greater than or equal to opening time and less than closing time
+            //if current time is between opening and closing
+            return checkClosingTime < 0 && checkOpeningTime >= 0;
+
     }
 
 
@@ -35,6 +40,11 @@ public class Restaurant {
 
     public List<Item> getMenu() {
 
+        return menu;
+
+    }
+
+    private void buildMenu() {
         Item i1 = new Item("Chicken Rice",10) ;
         menu.add(i1);
         Item i2 = new Item("Chicken soup",20) ;
@@ -53,9 +63,6 @@ public class Restaurant {
         menu.add(i8);
         Item i9 = new Item("Chicken Biryani",90) ;
         menu.add(i9);
-
-    return menu;
-
     }
 
     Item findItemByName(String itemName){

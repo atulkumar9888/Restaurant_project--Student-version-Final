@@ -37,11 +37,11 @@ class RestaurantTest {
         when(spyRestaurant.getCurrentTime()).thenReturn(LocalTime.parse("18:00:00"));
 
         //Assert
-        assertTrue(spyRestaurant.isRestaurantOpen());
+        assertTrue(spyRestaurant.isRestaurantOpen(spyRestaurant.getCurrentTime()));
 
         //Check edge case that the restaurant should be open at 10:30:00
         when(spyRestaurant.getCurrentTime()).thenReturn(LocalTime.parse("10:30:00"));
-        assertTrue(spyRestaurant.isRestaurantOpen());
+        assertTrue(spyRestaurant.isRestaurantOpen(spyRestaurant.getCurrentTime()));
 
 
     }
@@ -57,11 +57,11 @@ class RestaurantTest {
         when(spyRestaurant.getCurrentTime()).thenReturn(LocalTime.parse("23:00:00"));
 
         //Assert
-        assertFalse(spyRestaurant.isRestaurantOpen());
+        assertFalse(spyRestaurant.isRestaurantOpen(spyRestaurant.getCurrentTime()));
 
         //Check edge case that the restaurant should be closed at 22:00:00
         when(spyRestaurant.getCurrentTime()).thenReturn(LocalTime.parse("22:00:00"));
-        assertFalse(spyRestaurant.isRestaurantOpen());
+        assertFalse(spyRestaurant.isRestaurantOpen(spyRestaurant.getCurrentTime()));
 
     }
 
@@ -114,7 +114,7 @@ class RestaurantTest {
         if (temp!=null)
             selectedItems.add(temp);
         totalCost = restaurant.getTotalCostOfItems(selectedItems);
-        assertEquals(totalCost,600);
+        assertEquals(totalCost,688);
 
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

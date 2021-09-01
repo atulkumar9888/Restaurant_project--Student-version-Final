@@ -20,13 +20,13 @@ public class RestaurantService {
         restaurants.add(new Restaurant("Engineers Hub", "CP",opening_time, closing_time));
 
     }
-    public Restaurant findRestaurantByName(String restaurantName) throws  itemNotFoundException {
+    public Restaurant findRestaurantByName(String restaurantName) throws itemNotFoundException, restaurantNotFoundException {
         for(Restaurant res:restaurants) {
             if(res.getName().contains(restaurantName)) {
                 return res;
             }
         }
-        throw new itemNotFoundException("Restaurant not found");
+        throw new restaurantNotFoundException("Restaurant not found");
     }
 
 

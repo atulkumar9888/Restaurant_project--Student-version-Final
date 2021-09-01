@@ -9,14 +9,24 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RestaurantServiceTest {
 
+
+    LocalTime openingTime = LocalTime.parse("10:30:00");
+    LocalTime closingTime = LocalTime.parse("23:00:00");
     RestaurantService service = new RestaurantService();
-    public Restaurant restaurant;
+    public  Restaurant restaurant;
+
+    {
+        restaurant = service.addRestaurant("Amelie's cafe", "Chennai", openingTime, closingTime);
+        restaurant.addToMenu("Sweet corn soup", 100);
+        restaurant.addToMenu("Vegetable lasagne", 200);
+    }
+
     //REFACTOR ALL THE REPEATED LINES OF CODE
 
 
     //>>>>>>>>>>>>>>>>>>>>>>SEARCHING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     @Test
-    public void searching_for_existing_restaurant_should_return_expected_restaurant_object() throws itemNotFoundException {
+    public void searching_for_existing_restaurant_should_return_expected_restaurant_object() throws itemNotFoundException, restaurantNotFoundException {
         //WRITE UNIT TEST CASE HERE
         //Arrange
         Restaurant searchedRestaurant = service.findRestaurantByName("Amelie's cafe");
