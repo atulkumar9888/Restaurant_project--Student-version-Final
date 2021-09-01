@@ -106,7 +106,7 @@ class RestaurantTest {
         int totalCost = restaurant.getTotalCostOfItems(selectedItems);
 
         // Assert
-        assertEquals(totalCost,300);
+        assertEquals(totalCost,388);
 
         //Add more item and check the sum again
         restaurant.addToMenu("Indori Kabab", 300);

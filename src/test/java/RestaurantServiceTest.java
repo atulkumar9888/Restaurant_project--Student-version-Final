@@ -21,7 +21,7 @@ class RestaurantServiceTest {
         //Arrange
         Restaurant searchedRestaurant = service.findRestaurantByName("Amelie's cafe");
 
-        //Assert
+        //Arrange & Assert
         assertEquals(searchedRestaurant.getName(), restaurant.getName());
 
     }
